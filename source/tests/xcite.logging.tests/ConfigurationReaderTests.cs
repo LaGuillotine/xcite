@@ -92,10 +92,13 @@ namespace xcite.logging.tests {
             Assert.AreEqual(ELogLevel.Debug, lgCfg.Level);
             Assert.AreEqual("%date %level %text%nl", lgCfg.Pattern);
             
-            Assert.AreEqual(1, lgCfg.Streams.Length);
+            Assert.AreEqual(2, lgCfg.Streams.Length);
             
             ILogStream customStream = lgCfg.Streams[0];
             Assert.AreEqual(typeof(ConsoleStream), customStream.GetType());
+
+            ILogStream hiddenStream = lgCfg.Streams[1];
+            Assert.AreEqual(typeof(HiddenStream), hiddenStream.GetType());
         }
         
         [Test]
@@ -151,6 +154,18 @@ namespace xcite.logging.tests {
             log2.Info("Re-initialized");
             
             // Assert
+        }
+
+        class HiddenStream : AbstractStream {
+
+            protected override void OnDispose(bool disposing) {
+                
+            }
+
+            protected override void Write(string value) {
+                
+            }
+            
         }
     }
 }

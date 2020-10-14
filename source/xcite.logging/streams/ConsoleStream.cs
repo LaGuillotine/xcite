@@ -4,12 +4,12 @@ namespace xcite.logging.streams {
     /// <summary> Inherits <see cref="AbstractStream"/> to print records onto the console. </summary>
     public class ConsoleStream : AbstractStream {
         /// <inheritdoc />
-        public override void Dispose() {
-            // Noting to do here
+        protected override void OnDispose(bool disposing) {
+            // Nothing to do here
         }
 
         /// <inheritdoc />
-        public override void Write(string value) 
+        protected override void Write(string value) 
             => Console.Out.Write(value);
     }
 }

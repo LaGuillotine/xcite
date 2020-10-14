@@ -123,11 +123,12 @@ namespace xcite.logging.tests {
         private class StringBuilderLogStream : AbstractStream {
             private readonly StringBuilder _stringBuilder = new StringBuilder(1000);
 
-            public override void Dispose() {
+            /// <inheritdoc />
+            protected override void OnDispose(bool disposing) {
                 // Nothing to do here
             }
 
-            public override void Write(string value) {
+            protected override void Write(string value) {
                 _stringBuilder.Append(value);
             }
 
@@ -139,11 +140,12 @@ namespace xcite.logging.tests {
         private class FilteredStream : AbstractStream {
             private readonly StringBuilder _stringBuilder = new StringBuilder(1000);
 
-            public override void Dispose() {
+            /// <inheritdoc />
+            protected override void OnDispose(bool disposing) {
                 // Nothing to do here
             }
 
-            public override void Write(string value) {
+            protected override void Write(string value) {
                 _stringBuilder.Append(value);
             }
 

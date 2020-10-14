@@ -5,9 +5,9 @@ namespace xcite.logging {
     public interface ILogStream : IDisposable {
         /// <summary>
         /// Writes the specified <paramref name="value"/> into the stream.
-        /// Depending on the implementation, the <paramref name="logName"/> may be used to decide whether to write
-        /// into the stream or not. 
+        /// The argument <paramref name="logData"/> provides additional information
+        /// about the value to write.
         /// </summary>
-        void Write(string value, string logName);
+        void Write(string value, LogData logData);
     }
 }

@@ -3,12 +3,13 @@ namespace xcite.logging.streams {
     /// <seealso cref="System.Diagnostics.Debug"/>
     public class DebugStream : AbstractStream {
         /// <inheritdoc />
-        public override void Dispose() {
+        protected override void OnDispose(bool disposing) {
             // Nothing to do here
         }
 
         /// <inheritdoc />
-        public override void Write(string value) 
+        protected override void Write(string value) 
             => System.Diagnostics.Debug.Write(value);
+        
     }
 }
